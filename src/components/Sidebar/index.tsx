@@ -24,7 +24,7 @@ const Link: React.FC<Props> = ({ children, href }) => {
 
 const Sidebar = () => {
   return (
-    <div className="sm:w-3/12 md:w-2/12 w-6/12 h-full shadow-2xl">
+    <div className="sm:w-3/12 md:w-2/12 w-6/12 h-screen shadow-2xl">
       <div className="border-b py-3 mt-1 flex justify-around">
         <p className="text-xl font-semibold">Image Scraping</p>
       </div>
