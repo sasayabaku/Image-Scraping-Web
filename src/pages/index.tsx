@@ -25,10 +25,6 @@ interface loadingProps {
 
 const LoadingModal = (props: loadingProps) => {
 
-  // const [open_flag, setOpenFlag] = useState(false);
-  // const handleOpen = () => setOpenFlag(true);
-  // const handleClose = () => setOpenFlag(false);
-
   return(
     <div>
       <Modal
@@ -101,12 +97,25 @@ const Home = () => {
   }
 
   const listup_image_ui = imgList.map((item, index) => {
+
+    interface hoverInteractionProps {
+      img_src: string
+    };
+
+    const HoverInteraction = (props: hoverInteractionProps) => {
+      return(
+        <div>
+          <img src={props.img_src} style={{width: '100%'}}/>
+        </div>
+      )
+    };
+
     return (
       <Grid item xs={3}>
         <FormControl>
           <FormControlLabel 
-            control={<Checkbox value={index} onChange={onChange}/>}
-            label={<img src={item["src"]}/>}
+            control={<Checkbox value={index} onChange={onChange} style={{color: '#00cdcd'}} />}
+            label={ <HoverInteraction img_src={item["src"]}/> }
             labelPlacement="top"
           />
         </FormControl>
@@ -153,16 +162,16 @@ const Home = () => {
   return (
     <div className="">
       <Header />
+      <div className="flex p-6">
+          <TextField required fullWidth size="small" label="url" id="url" value={scrapeServerUrl} onChange={(e) => { setScrapeServerUrl(e.target.value) }} />
+          <Button className="mx-2" variant="contained" onClick={() => {listup_image()}}>Scrape</Button>
+          <Button className="mx-2" variant="contained" onClick={() => {create_pdf()}}>Create</Button>
+        </div>
       <div className="h-screen p-8 flex-y overflow-y-scroll overscroll-contain">
         <LoadingModal 
           text={progressText}
           open_flag={progressFlag}
         />
-        <div className="flex">
-          <TextField required fullWidth size="small" label="url" id="url" value={scrapeServerUrl} onChange={(e) => { setScrapeServerUrl(e.target.value) }} />
-          <Button className="mx-2" variant="contained" onClick={() => {listup_image()}}>Scrape</Button>
-          <Button className="mx-2" variant="contained" onClick={() => {create_pdf()}}>Create</Button>
-        </div>
         <div className="m-4">
           <Grid container spacing={3}>
             {listup_image_ui}
