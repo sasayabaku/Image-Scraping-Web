@@ -1,4 +1,4 @@
-FROM node:lts-buster
+FROM node:16.13-buster-slim
 
 SHELL ["/bin/bash", "-c"]
 
@@ -6,7 +6,7 @@ COPY . /materials
 
 WORKDIR /materials
 
-RUN yarn install --network-timeout 6000000
+RUN yarn install --network-timeout 600000
 
 RUN yarn build
 
