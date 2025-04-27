@@ -1,6 +1,7 @@
 import React from 'react';
 
 import AdbIcon from '@mui/icons-material/Adb';
+import { PictureAsPdfRounded } from '@mui/icons-material';
 import { useRouter } from 'next/router';
 
 type Props = {
@@ -29,7 +30,7 @@ const Sidebar = () => {
         <p className="text-xl font-semibold">Image Scraping</p>
       </div>
 
-      <div className="p-6 space-y-14">
+      <div className="p-6 space-y-14 text-xs">
         <div className="space-y-4">
           <h1 className="text-gray-600">Menu</h1>
 
@@ -40,8 +41,13 @@ const Sidebar = () => {
                 <p className=" ">Web Scraper</p>
               </div>
             </Link>
+            <Link href="/compressPdf">
+              <div className="flex p-3 text-gray-700 space-x-4 0 hover:bg-gray-50 hover:text-blue-600 cursor-pointer">
+                <PictureAsPdfRounded className="text-gray-500" />
+                <p className=" ">PDF Compresser</p>
+              </div>
+            </Link>
           </div>
-
         </div>
       </div>
     </div>

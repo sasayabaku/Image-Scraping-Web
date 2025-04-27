@@ -1,10 +1,10 @@
-import React from 'react'
-import { AnimatePresence } from 'framer-motion'
-import { AppProps } from 'next/app'
+import React from 'react';
+import { AnimatePresence } from 'framer-motion';
+import { AppProps } from 'next/app';
 
-import '../styles/globals.css'
+import '../styles/globals.css';
 
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/Sidebar';
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
   return (
@@ -13,12 +13,16 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
         <Sidebar />
         <div className="w-screen">
           <AnimatePresence exitBeforeEnter>
-            <Component className="overscroll-none" {...pageProps} key={router.route} />
+            <Component
+              className="overscroll-none"
+              {...pageProps}
+              key={router.route}
+            />
           </AnimatePresence>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MyApp
+export default MyApp;
