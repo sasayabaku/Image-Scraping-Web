@@ -43,16 +43,20 @@ const CompressPdf: React.FC<FileUploadProps> = ({ acceptedFileTypes }) => {
 
     const url = 'http://localhost:9999/compress-pdf';
 
-    const data = {
-      upload: files,
-    };
+    const formData = new FormData();
+
+    if (files) {
+      formData.append('file', files);
+    } else {
+      return;
+    }
 
     await axios
-      .post(url, data, {
+      .post(url, formData, {
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/pdf',
+          'Content-Type': 'multipart/form-data',
         },
+        responseType: 'blob',
       })
       .then((response) => {
         const url = URL.createObjectURL(
@@ -60,13 +64,14 @@ const CompressPdf: React.FC<FileUploadProps> = ({ acceptedFileTypes }) => {
         );
         const link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', String(files?.name) + '_compress.pdf');
+        link.setAttribute('download', String('test') + '_compressed.pdf');
         document.body.appendChild(link);
         link.click();
       })
       .catch((error) => {
         console.error(error);
       });
+
     await setProgressFlag(false);
   };
 
