@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { AnimatePresence } from 'framer-motion';
 import { AppProps } from 'next/app';
 

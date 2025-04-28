@@ -1,4 +1,4 @@
-FROM node:16.13-buster-slim
+FROM node:23-bullseye-slim
 
 SHELL ["/bin/bash", "-c"]
 
